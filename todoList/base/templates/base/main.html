@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Play&display=swap" rel="stylesheet">
+ 
+    <style>
+
+body{
+    background-color: rgb(184, 224, 211);
+    font-family: 'Play', sans-serif;
+    padding-top: 50px;
+    background-image: url('https://w0.peakpx.com/wallpaper/515/934/HD-wallpaper-whatsapp-abstract-green-pattern-texture.jpg');
+    }
+.container{
+    max-width: 500px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 12px 12px 10px -4px rgba(0,0,0,0.25);
+}
+
+a,p{
+    color: #4b5156;
+}
+
+a {
+    font-weight: 600;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+.header-bar{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(to right, #134e5e, #71b280);
+}
+
+.header-bar a{
+    color: rgb(247, 247, 247);
+    text-decoration: none;
+}
+
+.taskslist-wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    align-items: center;
+    border-top: 1px solid rgb(226, 226, 226);   
+}
+.task-title {
+    display: flex;
+    padding: 20px;
+}
+
+.task-title a {
+    text-decoration: none;
+    color: #4b5156;
+    margin-left: 10px;
+}
+
+.task-complete-icon {
+    height: 20px;
+    width: 20px;
+    background-color: rgb(105, 192, 105);
+    border-radius: 50%;
+}
+
+.task-incomplete-icon {
+    height: 20px;
+    width: 20px;
+    background-color: rgb(218, 218, 218);
+    border-radius: 50%;
+}
+
+.delete-title {
+    text-decoration: none;
+    font-weight: 900;
+    color: #cf4949;
+    font-size: 22px;
+    line-height: 0;
+    padding: 20px 0px;
+}
+
+@media screen and (max-width:320px) {
+            #search-add-wrapper {
+                padding: 10px;
+            }
+        }
+
+#search-add-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+#add-btn {
+    color: rgb(105, 192, 105);
+    text-decoration: none;
+    font-size: 42px;
+    text-shadow: 1px 1px #153f01;
+}
+
+input[type=text],
+input[type=password],
+textarea {
+    border: 1px solid #757575;
+    border-radius: 5px;
+    padding: 10px;
+    width: 90%;
+}
+
+label {
+    padding-top: 10px !important;
+    display: block;
+}
+
+.button {
+    border: 1px solid #757575;
+    background-color: #FFF;
+    color:  rgb(105, 192, 105);
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    
+    }
+
+.card-body {
+    padding: 20px;
+}
+
+label {
+            padding-top: 10px !important;
+            display: block;
+        }
+
+::placeholder {
+    font-weight: 300;
+    opacity: 0.5;
+}
+
+    </style>
+   
+</head>
+
+<body>
+    <div class="container">
+        {% block container %}
+
+        {% endblock container %}
+    </div>
+</body>
+</html>
