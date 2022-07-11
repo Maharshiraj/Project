@@ -37,18 +37,14 @@ class Registration(FormView):
     redirect_authenticated_user = True
     success_url = reverse_lazy('task-list')
 
+    
+
     # registered user directly gets logged in, doesn't go to login page 
     def form_valid(self, form):
         user = form.save()
-        if user is not None:
+        if user is not None:#user created successfully
             login(self.request, user)
         return super(Registration,self).form_valid(form)
-
-    ## PENDING-----------------doesn't get redirected
-    def mannride(self, *args, **kwargs):
-        if self.request.is_authenticated:
-            return redirect('task-list')
-        return super(Registration, self).mannride(*args, **kwargs)
 
 class TaskList(LoginRequiredMixin,ListView):
     model = Task
@@ -58,7 +54,8 @@ class TaskList(LoginRequiredMixin,ListView):
  
        context = super().get_context_data(**kwargs)
        print(context)
-       context['taskslist'] = context['taskslist'].filter(user=self.request.user).order_by('title')
+       #user=self.request.user means it will display the context data only if the intended user is logged in.
+       context['taskslist'] = context['taskslist'].filter(user=self.request.user)
        context['cnt'] = context['taskslist'].filter(complete=False).count()
        
        
