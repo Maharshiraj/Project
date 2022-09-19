@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.13 on linux)" generated="20220902 17:04:25.836" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="/home/i3systems/YTrobo/tasks.robot">
+<test id="s1-t1" name="YouTube videos downloader from excel sheet" line="8">
+<kw name="Open the intranet website">
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>https://en.savefrom.net/1-youtube-video-downloader-307/?url=http%3A%2F%2Fyoutube.com%2Fwatch%3Fv%3De4fwY9ZsxPw&amp;list=PLhQjrBD2T3817j24-GogXmWqO5Q5vYy0V&amp;index=10&amp;utm_source=youtube.com&amp;utm_medium=short_domains&amp;utm_campaign=ssyoutube.com&amp;a_ts=1661658173.125</arg>
+<arg>maximized=${TRUE}</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20220902 17:04:26.536" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220902 17:04:26.542" level="INFO">Created download root directory: /home/i3systems/.robocorp/webdrivers</msg>
+<msg timestamp="20220902 17:04:26.543" level="INFO">Created symlink directory: /home/i3systems/.robocorp/webdrivers</msg>
+<msg timestamp="20220902 17:04:26.543" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220902 17:04:27.822" level="INFO">Created Chrome browser with arguments: --start-maximized --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20220902 17:04:27.822" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20220902 17:04:27.823" level="INFO">Opening url 'https://en.savefrom.net/1-youtube-video-downloader-307/?url=http%3A%2F%2Fyoutube.com%2Fwatch%3Fv%3De4fwY9ZsxPw&amp;list=PLhQjrBD2T3817j24-GogXmWqO5Q5vYy0V&amp;index=10&amp;utm_source=youtube.com&amp;utm_medium=short_domains&amp;utm_campaign=ssyoutube.com&amp;a_ts=1661658173.125'</msg>
+<status status="PASS" starttime="20220902 17:04:26.536" endtime="20220902 17:04:29.120"/>
+</kw>
+<status status="PASS" starttime="20220902 17:04:26.536" endtime="20220902 17:04:29.121"/>
+</kw>
+<kw name="Fill URL from sheet">
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>/home/i3systems/Documents/CodeBeyond.xlsx</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220902 17:04:29.137" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x7f44c6335c10&gt;</msg>
+<status status="PASS" starttime="20220902 17:04:29.121" endtime="20220902 17:04:29.137"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${vid url}</var>
+<arg>header=True</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20220902 17:04:29.137" level="INFO">Created table: Table(columns=['Video Title', 'Video URL'], rows=2)</msg>
+<msg timestamp="20220902 17:04:29.137" level="INFO">${vid url} = Table(columns=['Video Title', 'Video URL'], rows=2)</msg>
+<status status="PASS" starttime="20220902 17:04:29.137" endtime="20220902 17:04:29.137"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20220902 17:04:29.137" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x7f44c6335c10&gt;</msg>
+<status status="PASS" starttime="20220902 17:04:29.137" endtime="20220902 17:04:29.138"/>
+</kw>
+<for flavor="IN">
+<var>${current vid url}</var>
+<value>@{vid url}</value>
+<iter>
+<var name="${current vid url}">{'Video Title': 'Deployments | MASTER WEB BACKEND | Soham Mukherjee', 'Video URL': 'https://www.youtube.com/watch?v=CM97X15-znM&amp;list=PLN4aKSfpk8TTD3g83qIK4PiNsImxWK-6x&amp;index=48'}</var>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>sf_url</arg>
+<arg>${current vid url}[Video URL]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220902 17:04:29.138" level="INFO">Typing text 'https://www.youtube.com/watch?v=CM97X15-znM&amp;list=PLN4aKSfpk8TTD3g83qIK4PiNsImxWK-6x&amp;index=48' into text field 'sf_url'.</msg>
+<status status="PASS" starttime="20220902 17:04:29.138" endtime="20220902 17:04:29.234"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>sf_submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220902 17:04:29.235" level="INFO">Clicking button 'sf_submit'.</msg>
+<status status="PASS" starttime="20220902 17:04:29.234" endtime="20220902 17:04:29.287"/>
+</kw>
+<kw name="Set Selenium Speed" library="RPA.Browser.Selenium">
+<arg>0.5 seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20220902 17:04:29.288" endtime="20220902 17:04:29.288"/>
+</kw>
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>//*[@id="sf_result"]/div/div[1]/div[2]/div[2]/div[1]/a</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20220902 17:04:32.442" level="INFO">Clicking element '//*[@id="sf_result"]/div/div[1]/div[2]/div[2]/div[1]/a'.</msg>
+<status status="PASS" starttime="20220902 17:04:29.288" endtime="20220902 17:04:33.522"/>
+</kw>
+<kw name="Set Selenium Speed" library="RPA.Browser.Selenium">
+<arg>0.5 seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20220902 17:04:33.522" endtime="20220902 17:04:33.523"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>NEW</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220902 17:04:33.523" endtime="20220902 17:04:35.539"/>
+</kw>
+<kw name="Close Window" library="RPA.Browser.Selenium">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20220902 17:04:35.540" endtime="20220902 17:04:36.059"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>MAIN</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220902 17:04:36.060" endtime="20220902 17:04:37.076"/>
+</kw>
+<status status="PASS" starttime="20220902 17:04:29.138" endtime="20220902 17:04:37.076"/>
+</iter>
+<iter>
+<var name="${current vid url}">{'Video Title': 'Github Actions | MASTER WEB BACKEND | Soham Mukherjee', 'Video URL': 'https://www.youtube.com/watch?v=VdgcK-CpN_c&amp;list=PLN4aKSfpk8TTD3g83qIK4PiNsImxWK-6x&amp;index=49'}</var>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>sf_url</arg>
+<arg>${current vid url}[Video URL]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220902 17:04:37.078" level="INFO">Typing text 'https://www.youtube.com/watch?v=VdgcK-CpN_c&amp;list=PLN4aKSfpk8TTD3g83qIK4PiNsImxWK-6x&amp;index=49' into text field 'sf_url'.</msg>
+<status status="PASS" starttime="20220902 17:04:37.077" endtime="20220902 17:04:38.716"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>sf_submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220902 17:04:38.717" level="INFO">Clicking button 'sf_submit'.</msg>
+<status status="PASS" starttime="20220902 17:04:38.716" endtime="20220902 17:04:40.798"/>
+</kw>
+<kw name="Set Selenium Speed" library="RPA.Browser.Selenium">
+<arg>0.5 seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20220902 17:04:40.799" endtime="20220902 17:04:40.799"/>
+</kw>
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>//*[@id="sf_result"]/div/div[1]/div[2]/div[2]/div[1]/a</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20220902 17:04:42.534" level="INFO">Clicking element '//*[@id="sf_result"]/div/div[1]/div[2]/div[2]/div[1]/a'.</msg>
+<status status="PASS" starttime="20220902 17:04:40.799" endtime="20220902 17:04:43.602"/>
+</kw>
+<kw name="Set Selenium Speed" library="RPA.Browser.Selenium">
+<arg>0.5 seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20220902 17:04:43.602" endtime="20220902 17:04:43.602"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>NEW</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220902 17:04:43.602" endtime="20220902 17:04:45.617"/>
+</kw>
+<kw name="Close Window" library="RPA.Browser.Selenium">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20220902 17:04:45.617" endtime="20220902 17:04:46.144"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>MAIN</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220902 17:04:46.144" endtime="20220902 17:04:47.161"/>
+</kw>
+<status status="PASS" starttime="20220902 17:04:37.077" endtime="20220902 17:04:47.161"/>
+</iter>
+<status status="PASS" starttime="20220902 17:04:29.138" endtime="20220902 17:04:47.161"/>
+</for>
+<status status="PASS" starttime="20220902 17:04:29.121" endtime="20220902 17:04:47.161"/>
+</kw>
+<status status="PASS" starttime="20220902 17:04:26.535" endtime="20220902 17:04:47.162"/>
+</test>
+<doc>YouTube videos downloader from excel sheet</doc>
+<status status="PASS" starttime="20220902 17:04:25.837" endtime="20220902 17:04:47.163"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220902 17:04:26.529" level="WARN">RPA.Desktop.Windows library works only on Windows platform</msg>
+<msg timestamp="20220902 17:04:26.530" level="WARN">/home/i3systems/.robocorp/holotree/f0ef481_b1f3c24_1c0bc041/lib/python3.9/site-packages/RPA/Desktop/Windows.py:209: FutureWarning: `RPA.Desktop.Windows` got deprecated and will be no longer maintained, please use `RPA.Windows` instead (https://robocorp.com/docs/libraries/rpa-framework/rpa-windows)
+  deprecation(
+</msg>
+</errors>
+</robot>

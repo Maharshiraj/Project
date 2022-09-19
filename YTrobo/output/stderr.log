@@ -1,0 +1,6 @@
+/home/i3systems/.robocorp/holotree/f0ef481_b1f3c24_1c0bc041/lib/python3.9/site-packages/selenium/webdriver/firefox/firefox_profile.py:208: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  if setting is None or setting is '':
+[ WARN ] RPA.Desktop.Windows library works only on Windows platform
+[ WARN ] /home/i3systems/.robocorp/holotree/f0ef481_b1f3c24_1c0bc041/lib/python3.9/site-packages/RPA/Desktop/Windows.py:209: FutureWarning: `RPA.Desktop.Windows` got deprecated and will be no longer maintained, please use `RPA.Windows` instead (https://robocorp.com/docs/libraries/rpa-framework/rpa-windows)
+  deprecation(
+
