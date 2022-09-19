@@ -1,0 +1,20 @@
+"""Description of how to create an YT video playlist excel file for the script"""
+
+Vist the Youtube playlist in the broswer.
+
+STEP 1: Open CONSOLE (Ctrl + Shift + I)
+Let the page get loaded completely.
+
+STEP-2: Copy the following commands in console and press enter. 
+
+var scroll = setInterval(function(){ window.scrollBy(0, 1000)}, 1000); 
+
+window.clearInterval(scroll); console.clear(); urls = $$('a'); urls.forEach(function(v,i,a){if (v.id=="video-title"){console.log('\t'+v.title+'\t'+v.href+'\t')}}); 
+
+STEP 3: Create an excel file
+
+You will get the video name and URL's in the console, copy it in an excel file with appropriate headers for the script.
+Video Name | Video URL 
+
+Refer this quora answer for the same.
+https://qr.ae/pvCm15
